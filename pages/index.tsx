@@ -3,16 +3,15 @@ import Head from 'next/head'
 
 import Eres from './eres';
 import RehabilitaciónVocal from './rehabilitacionVocal'
+import EntrenaminetoVocal from './entrenamientoVocal';
 import Checkout from './checkout';
 
 
 export default function Home({ router }) {
-
-  console.log(router)
-
   const [routing, _] = useState<any>({
     eres: <Eres />,
     rehabilitacionvocal: < RehabilitaciónVocal />,
+    entrenamientovocal: <EntrenaminetoVocal />,
     checkout: <Checkout />
   });
 
@@ -24,11 +23,9 @@ export default function Home({ router }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       </Head>
-
-
-      {routing[router as string]}
-
-
+      <>
+        {routing[router as string]}
+      </>
     </>
   )
 }

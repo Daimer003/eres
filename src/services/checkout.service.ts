@@ -1,7 +1,7 @@
 
-const key: string = process.env.NEXT_PUBLIC_SERVICE_PUBLIC_kEY;
-const v1: string = process.env.NEXT_PUBLIC_BASE_API_VERSION;
-const token: string = process.env.NEXT_PUBLIC_SERVICE_ACCESS_TOKEN;
+// const key: string = process.env.NEXT_PUBLIC_SERVICE_PUBLIC_kEY;
+// const v1: string = process.env.NEXT_PUBLIC_BASE_API_VERSION;
+// const token: string = process.env.NEXT_PUBLIC_SERVICE_ACCESS_TOKEN;
 
 export class CheckoutService {
     static pay = async () => {

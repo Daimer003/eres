@@ -24,11 +24,10 @@ const Success = () => {
     useEffect(() => {
         const reference = data?.collection_id
         if (reference) {
-            const success = async () => {
+            (async () => {
                 const response = await CheckoutService.getSuccess(String(reference))
                 reference && setDetails(response)
-            }
-            success()
+            })()
         }
     }, [data])
 

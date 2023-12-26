@@ -10,8 +10,8 @@ import Layaut from '@/src/components/layout/Layaut';
 import { useState } from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [route, setRout] = useState('eres');
-  const ruta = (r: string) => setRout(r)
+  const [route, _] = useState('eres');
+
 
   return (
 
@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ERESProvider>
         < CartProvider >
           <LocaleProvider >
-            <Layaut ruta={ruta}>
+            <Layaut >
               <Component {...pageProps} router={route} />
             </Layaut>
           </LocaleProvider>

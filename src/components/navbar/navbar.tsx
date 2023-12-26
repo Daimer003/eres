@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
 import { Box, Spacer } from "@chakra-ui/react";
 import Image from "next/image";
-import { BoxContainerNav, BoxNav, BoxMenu, BoxMenuDesktop, BoxShop } from "@/styles/components/Navbar/navbar.styles";
+import {
+    BoxContainerNav,
+    BoxNav,
+    BoxMenu,
+    BoxMenuDesktop,
+    BoxShop
+} from "@/styles/components/Navbar/navbar.styles";
 import { GrShop } from "react-icons/gr";
 import { HamburgerIcon } from '@chakra-ui/icons'
 import { useCart } from "@/src/hooks/useCart";
 import Cart from "../cart/cart";
+import Link from "next/link";
 
-interface Props {
-    ruta?: (r: string) => void
-}
-
-const Navbar = ({ ruta }: Props) => {
+const Navbar = () => {
     const [show, setShow] = useState(false);
     const { eres } = useCart()
     const [itemsCart, setItemsCart] = useState<boolean>(false)
@@ -23,6 +26,7 @@ const Navbar = ({ ruta }: Props) => {
             window.removeEventListener("scroll", listenToScroll);
     }, [])
 
+    //*Si el desplazamiento es mayor a 30, cambia el estado
     const listenToScroll = () => {
         let heightToShow = 30;
         const winScroll = document.body.scrollTop ||
@@ -48,9 +52,9 @@ const Navbar = ({ ruta }: Props) => {
                 <Spacer />
                 <BoxMenuDesktop>
                     <Box display="flex" gap="60px">
-                        <span onClick={() => ruta("eres")}>Inicio</span>
-                        <span onClick={() => ruta("rehabilitacionvocal")}>Rehabilitación vocal</span>
-                        <span onClick={() => ruta("eres")}>Entrenamiento Vocal</span>
+                        <Link href="/eres">Inicio</Link>
+                        <Link href="/rehabilitacionvocal">Rehabilitación vocal</Link>
+                        <Link href="/entrenamientovocal">Entrenamiento Vocal</Link>
                     </Box>
                     <Spacer />
                     <Box display="flex" gap="10px" fontWeight="600">

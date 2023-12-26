@@ -35,19 +35,25 @@ const Checkout = () => {
         phone: ""
     })
 
+    //*Valida que no este vacio los campos
     const validField = () => {
-        if (dataForm.name == "" && dataForm.lastname == "" && dataForm.email == "" && dataForm.phone == "") {
+        if (
+            dataForm.name == "" &&
+            dataForm.lastname == "" &&
+            dataForm.email == "" &&
+            dataForm.phone == ""
+        ) {
             setFieldRequired(true)
         } else {
             setFieldRequired(false)
         }
     }
 
-
     useEffect(() => {
         totalItems()
     }, [eres])
 
+    //* Suma el price de los items agregados
     const totalItems = () => {
         let total = 0;
         for (let i = 0; i <= eres.length; i++) {
@@ -175,7 +181,9 @@ const Checkout = () => {
                         onClick={() => createOrder()}
                         isLoading={btnIsDisabled}
                         isDisabled={btnIsDisabled || fieldRequired}
-                    >Pagar</Button>
+                    >
+                        Pagar
+                    </Button>
                 </Box>
             </BoxContainer>
         </BoxCheckout>

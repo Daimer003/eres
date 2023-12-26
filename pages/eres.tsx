@@ -136,8 +136,20 @@ const Eres = () => {
                                 alignItems="center"
                                 justifyContent="center"
                             >
-                                <Text as="h4" color="#9AE4D3" fontSize="4xl" fontFamily="'Cormorant Garamond', serif">Danna Palacios</Text>
-                                <Text as="p" color="#FFFFFF" fontSize="2xl" >Escucha nuestra voz.</Text>
+                                <Text
+                                    as="h4"
+                                    color="#9AE4D3"
+                                    fontSize="4xl"
+                                    fontFamily="'Cormorant Garamond', serif"
+                                >Danna Palacios
+                                </Text>
+                                <Text
+                                    as="p"
+                                    color="#FFFFFF"
+                                    fontSize="2xl"
+                                >
+                                    Escucha nuestra voz.
+                                </Text>
                             </Box>
                         </BoxContent>
                     </BoxRowTeachers>
@@ -146,10 +158,18 @@ const Eres = () => {
 
             <Box>
                 <BoxRehabilitation>
-                    <Text as="h3" fontSize="5xl" fontFamily="'Cormorant Garamond', serif">
+                    <Text
+                        as="h3"
+                        fontSize="5xl"
+                        fontFamily="'Cormorant Garamond', serif"
+                    >
                         Rehabilitación Vocal
                     </Text>
-                    <Text as="p" fontSize="18px" fontFamily="'Cormorant Garamond', serif">
+                    <Text
+                        as="p"
+                        fontSize="18px"
+                        fontFamily="'Cormorant Garamond', serif"
+                    >
                         Nuestra categoría de Rehabilitación Vocal está diseñada para cuidar y mejorar tu voz hablada y/o cantada. Te ofrecemos los siguientes paquetes especializados para ti:
                     </Text>
                     <BoxRowRehabilitation>

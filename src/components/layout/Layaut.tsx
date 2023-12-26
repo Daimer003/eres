@@ -5,10 +5,9 @@ import Footer from "../footer/footer";
 
 interface Props {
     children: any,
-    ruta?: (r: string) => void,
 }
 
-const Layaut = ({ children, ruta }: Props) => {
+const Layaut = ({ children }: Props) => {
     return (
         <Box
             display="flex"
@@ -18,7 +17,7 @@ const Layaut = ({ children, ruta }: Props) => {
             h="100%"
             position="relative"
         >
-            <Navbar ruta={ruta} />
+            <Navbar />
 
             <BoxLayaut>
                 {children}

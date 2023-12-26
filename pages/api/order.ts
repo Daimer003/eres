@@ -1,13 +1,14 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Cors from 'cors';
 import { MercadoPagoConfig, Preference } from 'mercadopago';
-import { parse } from 'path';
+// import { parse } from 'path';
 
 
-const key: string = process.env.NEXT_PUBLIC_API_KER;
-const v1: string = process.env.NEXT_PUBLIC_BASE_API_VERSION;
+// const key: string = process.env.NEXT_PUBLIC_API_KER;
+// const v1: string = process.env.NEXT_PUBLIC_BASE_API_VERSION;
 const token: string = process.env.NEXT_PUBLIC_SERVICE_ACCESS_TOKEN;
-const url: string = process.env.NEXT_PUBLIC_BASE_API_URL
+const url: string = process.env.NEXT_PUBLIC_DOMAIN_URL
+const urls: string = process.env.NEXT_PUBLIC_DOMAIN_URLS
 
 //*Configuracion de mercadopago
 const client = new MercadoPagoConfig({ accessToken: token, options: { timeout: 5000 } });
@@ -64,9 +65,9 @@ export default async function handler(
                         number: params?.phone
                     }
                 },
-                notification_url: "https://f009-181-32-150-92.ngrok-free.app/api/webhook",
+                notification_url: `${url}/api/webhook`,
                 back_urls: {
-                    success: "http://localhost:3000/success"
+                    success: `${urls}/success`
                 },
             }
         })
