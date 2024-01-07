@@ -6,7 +6,7 @@
 export class CheckoutService {
     static pay = async () => {
         try {
-            const response = await fetch(`/api/payments`, {
+            const response = await fetch(`/api/mercadoPago/payments`, {
                 method: "GET",
                 headers: {
                     'Accept': 'application/json',
@@ -33,7 +33,7 @@ export class CheckoutService {
 
     ) => {
         try {
-            const response = await fetch(`/api/order`, {
+            const response = await fetch(`/api/mercadoPago/order`, {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -60,7 +60,7 @@ export class CheckoutService {
 
     static getSuccess = async (id: string) => {
         try {
-            const response = await fetch(`/api/success`, {
+            const response = await fetch(`/api/mercadoPago/success`, {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',

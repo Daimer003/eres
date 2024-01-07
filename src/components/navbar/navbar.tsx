@@ -14,13 +14,16 @@ import { useCart } from "@/src/hooks/useCart";
 import Cart from "../cart/cart";
 import Link from "next/link";
 
+
 const Navbar = () => {
     const [show, setShow] = useState(false);
-    const { eres } = useCart()
+    const { eres, currency, checkout } = useCart()
     const [itemsCart, setItemsCart] = useState<boolean>(false)
+    // const [currency, setCurrency] = useState('COP')
 
 
     useEffect(() => {
+        checkout("COP", 10)
         window.addEventListener("scroll", listenToScroll);
         return () =>
             window.removeEventListener("scroll", listenToScroll);
@@ -38,9 +41,17 @@ const Navbar = () => {
         }
     }
 
-    const onCart = () => {
-        setItemsCart(!itemsCart)
+    /** 
+     * Abre la bolsa para ver los items agregados
+     * @param listening: -Boolean false cerrado / true abierto
+     */
+    const onCart = (listening: boolean) => {
+        setItemsCart(listening)
     }
+
+    useEffect(() => {
+        console.log(currency)
+    }, [currency])
 
 
     return (
@@ -58,15 +69,15 @@ const Navbar = () => {
                     </Box>
                     <Spacer />
                     <Box display="flex" gap="10px" fontWeight="600">
-                        <BoxShop n={eres?.length}><span onClick={() => onCart()}><GrShop /></span></BoxShop>
-                        <span>USD</span>
+                        <BoxShop n={eres?.length}><span onClick={() => onCart(true)}><GrShop /></span></BoxShop>
+                        <span onClick={() => checkout("USD", 10)}>{currency}</span>
                     </Box>
                 </BoxMenuDesktop>
                 <BoxMenu>
                     <span><HamburgerIcon boxSize={8} /></span>
                 </BoxMenu>
             </BoxNav >
-            <Cart onClose={itemsCart} onOpen={() => onCart()} />
+            <Cart onClose={itemsCart} onOpen={onCart} />
         </BoxContainerNav>
     );
 }

@@ -11,28 +11,17 @@ import { GrShop } from "react-icons/gr";
 
 interface Props {
     onClose: boolean,
-    onOpen: () => void
+    onOpen: (listening) => void
 }
-
 
 const Cart = ({ onClose, onOpen }: Props) => {
     const { eres, removeToCart } = useCart()
     const route = useRouter()
-    const [hovered, setHovered] = useState(false);
-
-    /** 
-    * Si el numero agregado al carrito es diferente abre los agregados.
-    * @param eres?.length: -Cantidad de items agregados
-    * -onOpen() función para ebrir el carrito 
-    */
-    useEffect(() => {
-        if (eres?.length !== 0)
-            onOpen()
-    }, [eres?.length])
+    const [hovered, setHovered] = useState(true);
 
     const openCheckout = () => {
         route.push("/checkout")
-        onOpen()
+        onOpen(false)
     }
     //* Maneja el estado del hover para eliminar el item
     const handleMouseLeave = () => {
@@ -42,7 +31,7 @@ const Cart = ({ onClose, onOpen }: Props) => {
     return (
         <BoxCart on={onClose}>
             <Box>
-                <span onClick={() => onOpen()}>
+                <span onClick={() => onOpen(false)}>
                     <FiChevronRight
                         fontSize="30px"
                         color="#000000"

@@ -14,11 +14,14 @@ import {
     BreadcrumbItem,
     BreadcrumbLink,
     Text,
-    Spacer
+    Spacer,
+    Select
 } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import CardOrden from "@/src/components/cart/cartOrden";
-import { CheckoutService } from "@/src/services/checkout.service";
+import { CheckoutService } from "@/src/services/checkout.mercadopago.service";
+import { PayPalButtons } from "@paypal/react-paypal-js";
+
 
 
 const Checkout = () => {
@@ -170,6 +173,13 @@ const Checkout = () => {
                         <InputLeftAddon children='+57' />
                         <Input type='tel' placeholder='Número de teléfono' name="phone" onChange={form} />
                     </InputGroup>
+                    <FormControl isRequired>
+                        <FormLabel>Tipo de moneda</FormLabel>
+                        <Select placeholder='COP'>
+                            {/* <option value='option1'>COP</option> */}
+                            <option value='option2'>USD</option>
+                        </Select>
+                    </FormControl>
                     <Box
                         display="flex"
                     >
@@ -177,13 +187,29 @@ const Checkout = () => {
                         <Spacer />
                         <Text as="span" fontSize="2xl" fontWeight="bold">${total.toLocaleString()}</Text>
                     </Box>
-                    <Button
-                        onClick={() => createOrder()}
-                        isLoading={btnIsDisabled}
-                        isDisabled={btnIsDisabled || fieldRequired}
+                    <Box
+                        display="flex"
+                        width="100%"
+                        height="auto"
+                        gap="20px"
                     >
-                        Pagar
-                    </Button>
+                        <Button
+                            width="100%"
+                            height="45px"
+                            onClick={() => createOrder()}
+                            isLoading={btnIsDisabled}
+                            isDisabled={btnIsDisabled || fieldRequired}
+                        >
+                            Pagar con mercado pago
+                        </Button>
+                        <PayPalButtons
+                            style={{
+                                "layout": "horizontal",
+                                height: 45
+                            }}
+                        />
+                    </Box>
+
                 </Box>
             </BoxContainer>
         </BoxCheckout>

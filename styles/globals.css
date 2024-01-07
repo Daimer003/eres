@@ -23,3 +23,8 @@ p {
   font-family: 'Poppins', sans-serif !important;
   font-weight: 300 !important;
 }
+
+.button-paypal {
+  width: 100%;
+  height: 40px;
+}

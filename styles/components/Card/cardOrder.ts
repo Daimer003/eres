@@ -3,7 +3,7 @@ import { Box } from "@chakra-ui/react";
 
 export const BoxCardOrderImage = styled(Box)`
   display: none;
-  width: 100%;
+  width: auto;
   height: auto;
   @media screen and (width > 900px) {
     display: flex;

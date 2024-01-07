@@ -7,6 +7,7 @@ const initialEREState: EREsState = {
     eres: null,
     filter: "Black",
     filteredEres: null,
+    currency: "USD"
 }
 
 const handlers: Record<
@@ -32,7 +33,6 @@ const reducer = (state: EREsState, action: Action): EREsState =>
 
 export const ERESContext = createContext({
     ...initialEREState,
-
 });
 
 const ERESProvider = (props: any) => {
@@ -41,21 +41,25 @@ const ERESProvider = (props: any) => {
 
     useEffect(() => {
         const initialize = async () => {
-            if (true) {
 
-                dispatch({
-                    type: "INITIALIZE",
-                    payload: {
-                        isInitialized: true,
-                        filter: "Black",
-                        filteredEres: null,
-                        eres: curso,
-                    }
-                })
-            }
+            dispatch({
+                type: "INITIALIZE",
+                payload: {
+                    isInitialized: true,
+                    filter: "Black",
+                    filteredEres: null,
+                    eres: curso,
+                    currency: "USD"
+                }
+            })
+
         }
         initialize().then();
     }, []);
+
+    const changeCurrency = () => {
+        console.log("currency")
+    }
 
     return (
         <ERESContext.Provider value={{

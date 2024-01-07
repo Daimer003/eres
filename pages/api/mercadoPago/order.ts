@@ -42,6 +42,17 @@ export default async function handler(
     const preference = new Preference(client);
 
     try {
+        /** 
+        * Crear una orden de compra
+        * @param id: id del item 
+        * @param title: titulo del item
+        * @param currency_id: tipo de moneda
+        * @param picture_url: url de la imagen del item
+        * @param description: descripciòn del item
+        * @param category_id: categoria del item
+        * @param quantity: cantiad
+        * @param unit_price: precio del item
+        */
         const response = await preference.create({
             body: {
                 items: [

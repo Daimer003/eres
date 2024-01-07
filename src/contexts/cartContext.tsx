@@ -1,10 +1,11 @@
 import React, { createContext, useEffect, useReducer } from "react";
-import { Action, AddToCart, CartContextValue, CartState, InitalizeAction, RemoveToCart } from "@/src/models/cart";
+import { Action, AddToCart, CartContextValue, CartState, InitalizeAction, RemoveToCart, CheckoutCart } from "@/src/models/cart";
 import { curso } from "../utils/data/data";
 
 const initialCartState: CartState = {
   eres: [],
   eresIds: [],
+  currency: "USD"
 };
 
 const handlers: Record<string, (state: CartState, action: Action) => CartState> = {
@@ -15,6 +16,7 @@ const handlers: Record<string, (state: CartState, action: Action) => CartState> 
       eres: eres
     };
   },
+
   ADD_TO_CART: (state: CartState, action: AddToCart): CartState => {
     const { eres } = action.payload;
     const thisERESIsAlreadyIn = state.eres.find((eresId) => eresId.id === eres.id);
@@ -27,7 +29,7 @@ const handlers: Record<string, (state: CartState, action: Action) => CartState> 
       eresIds: cartERES.length && cartERES.reduce((acc, eres) => [...acc, eres.id], []),
     };
   },
-  //
+
   REMOVE_TO_CART: (state: CartState, action: RemoveToCart): CartState => {
     const { id } = action.payload;
     const cartERES = state.eres.filter((eresId) => eresId.id !== id);
@@ -37,11 +39,14 @@ const handlers: Record<string, (state: CartState, action: Action) => CartState> 
       eresIds: cartERES.length && cartERES.reduce((acc, eres) => [...acc, eres.id], []),
     };
   },
-  CHECKOUT_CART: (state: CartState): CartState => {
+
+  CHECKOUT_CART: (state: CartState, action: CheckoutCart): CartState => {
+    const { currency } = action.payload;
     return {
       ...state,
       eres: [],
       eresIds: [],
+      currency: currency
     };
   },
 };
@@ -105,15 +110,13 @@ const CartProvider = (props: any) => {
 
   const checkout = async (currency: string, price: number) => {
     try {
-      if (true) {
-        dispatch({
-          type: "CHECKOUT_CART",
-        });
-        console.log("all set, congrats!");
-        return {
-          ids: state.eresIds,
-        };
-      }
+      dispatch({
+        type: "CHECKOUT_CART",
+        payload: {
+          currency: currency
+        }
+      });
+
     } catch (e) {
       if ("Funds" === "Funds") {
         // Handle the error appropriately

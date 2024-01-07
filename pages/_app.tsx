@@ -8,23 +8,27 @@ import ERESProvider from '@/src/contexts/eresContext';
 import "../styles/swiper.css";
 import Layaut from '@/src/components/layout/Layaut';
 import { useState } from 'react';
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
+const clientId = process.env.NEXT_PUBLIC_CLIENT_ID as string
 
 export default function App({ Component, pageProps }: AppProps) {
   const [route, _] = useState('eres');
 
-
   return (
 
     <ChakraProvider>
-      <ERESProvider>
-        < CartProvider >
-          <LocaleProvider >
-            <Layaut >
-              <Component {...pageProps} router={route} />
-            </Layaut>
-          </LocaleProvider>
-        </CartProvider>
-      </ERESProvider>
+      <PayPalScriptProvider options={{ clientId: clientId }} >
+        <ERESProvider>
+          < CartProvider >
+            <LocaleProvider >
+              <Layaut >
+                <Component {...pageProps} router={route} />
+              </Layaut>
+            </LocaleProvider>
+          </CartProvider>
+        </ERESProvider>
+      </PayPalScriptProvider>
     </ChakraProvider>
   )
 }

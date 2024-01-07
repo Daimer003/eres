@@ -1,4 +1,4 @@
-import { CheckoutService } from "@/src/services/checkout.service";
+import { CheckoutService } from "@/src/services/checkout.mercadopago.service";
 import { ButtonPrimary } from "@/styles/components/Button/button.styles";
 import {
     Box,

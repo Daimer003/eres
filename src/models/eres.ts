@@ -4,6 +4,7 @@ export interface EREsState {
     filter: string;
     eres: ERESDatum[] | null;
     filteredEres: ERESDatum[] | null;
+    currency: string
 }
 
 export type InitalizeAction = {
@@ -13,6 +14,7 @@ export type InitalizeAction = {
         filter: string;
         eres: ERESDatum[] | null;
         filteredEres: ERESDatum[] | null;
+        currency: string
     };
 }
 
