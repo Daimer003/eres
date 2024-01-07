@@ -7,13 +7,11 @@ import { LocaleProvider } from '@/src/contexts/internatiolizationContext';
 import ERESProvider from '@/src/contexts/eresContext';
 import "../styles/swiper.css";
 import Layaut from '@/src/components/layout/Layaut';
-import { useState } from 'react';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const clientId = process.env.NEXT_PUBLIC_CLIENT_ID as string
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [route, _] = useState('eres');
 
   return (
 
@@ -23,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
           < CartProvider >
             <LocaleProvider >
               <Layaut >
-                <Component {...pageProps} router={route} />
+                <Component {...pageProps} />
               </Layaut>
             </LocaleProvider>
           </CartProvider>

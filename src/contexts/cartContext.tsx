@@ -5,7 +5,7 @@ import { curso } from "../utils/data/data";
 const initialCartState: CartState = {
   eres: [],
   eresIds: [],
-  currency: "USD"
+  currencyType: "USD"
 };
 
 const handlers: Record<string, (state: CartState, action: Action) => CartState> = {
@@ -41,12 +41,10 @@ const handlers: Record<string, (state: CartState, action: Action) => CartState> 
   },
 
   CHECKOUT_CART: (state: CartState, action: CheckoutCart): CartState => {
-    const { currency } = action.payload;
+    const { currencyType } = action.payload;
     return {
       ...state,
-      eres: [],
-      eresIds: [],
-      currency: currency
+      currencyType: currencyType
     };
   },
 };
@@ -58,7 +56,7 @@ export const CartContext = createContext<CartContextValue>({
   ...initialCartState,
   addToCart: async () => Promise.resolve(),
   removeToCart: async () => Promise.resolve(),
-  checkout: async () => Promise.resolve(),
+  currency: async () => Promise.resolve(),
 });
 
 const CartProvider = (props: any) => {
@@ -108,20 +106,13 @@ const CartProvider = (props: any) => {
     }
   };
 
-  const checkout = async (currency: string, price: number) => {
-    try {
-      dispatch({
-        type: "CHECKOUT_CART",
-        payload: {
-          currency: currency
-        }
-      });
-
-    } catch (e) {
-      if ("Funds" === "Funds") {
-        // Handle the error appropriately
+  const currency = async (currencyType: string) => {
+    dispatch({
+      type: "CHECKOUT_CART",
+      payload: {
+        currencyType: currencyType
       }
-    }
+    });
   };
 
   return (
@@ -130,7 +121,7 @@ const CartProvider = (props: any) => {
         ...state,
         addToCart,
         removeToCart,
-        checkout,
+        currency,
       }}
     >
       {children}

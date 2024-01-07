@@ -3,13 +3,13 @@ import { ERESDatum } from "@/src/models/eres";
 export interface CartState {
     eres: ERESDatum[];
     eresIds: number[];
-    currency: string
+    currencyType: string
 }
 
 export interface CartContextValue extends CartState {
     addToCart: (id: number) => Promise<void>;
     removeToCart: (id: number) => Promise<void>;
-    checkout: (currency: string, price: number) => Promise<void | { ids: number[] }>;
+    currency: (currencyType: string) => Promise<void | { ids: number[] }>;
 }
 
 
@@ -30,7 +30,7 @@ export type RemoveToCart = {
 export type CheckoutCart = {
     type: 'CHECKOUT_CART';
     payload: {
-        currency: string;
+        currencyType: string;
     };
 }
 

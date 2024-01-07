@@ -21,11 +21,11 @@ import { useRouter } from "next/navigation";
 import CardOrden from "@/src/components/cart/cartOrden";
 import { CheckoutService } from "@/src/services/checkout.mercadopago.service";
 import { PayPalButtons } from "@paypal/react-paypal-js";
-
+import { SiMercadopago } from "react-icons/si";
 
 
 const Checkout = () => {
-    const { eres, removeToCart } = useCart()
+    const { eres, removeToCart, currency, currencyType } = useCart()
     const router = useRouter()
     const [total, setTotal] = useState<number>(0)
     const [btnIsDisabled, setBtnIsDisabled] = useState<boolean>(false)
@@ -52,10 +52,6 @@ const Checkout = () => {
         }
     }
 
-    useEffect(() => {
-        totalItems()
-    }, [eres])
-
     //* Suma el price de los items agregados
     const totalItems = () => {
         let total = 0;
@@ -67,6 +63,10 @@ const Checkout = () => {
         setTotal(total)
         if (total == 0) router.push("/")
     }
+
+    useEffect(() => {
+        totalItems()
+    }, [eres])
 
     //* Obtiene los datos del formulario de pago
     const form = (e) => {
@@ -104,11 +104,17 @@ const Checkout = () => {
 
     }
 
+    //*Tipo de moneda seleccionado (USD / COP)
+    const handleCurrency = (e: any) => {
+        let c = e.target.value
+        currency(c)
+    }
+
     return (
         <BoxCheckout>
             <Breadcrumb>
                 <BreadcrumbItem>
-                    <BreadcrumbLink onClick={() => router.push("/")} href='#'>Home</BreadcrumbLink>
+                    <BreadcrumbLink href='/eres'>Home</BreadcrumbLink>
                 </BreadcrumbItem>
 
                 <BreadcrumbItem>
@@ -128,7 +134,6 @@ const Checkout = () => {
                         display="flex"
                         width="100%"
                         height="100%"
-                        maxHeight="470px"
                         overflowY="auto"
                         flexDirection="column"
                         gap="20px"
@@ -175,14 +180,16 @@ const Checkout = () => {
                     </InputGroup>
                     <FormControl isRequired>
                         <FormLabel>Tipo de moneda</FormLabel>
-                        <Select placeholder='COP'>
-                            {/* <option value='option1'>COP</option> */}
-                            <option value='option2'>USD</option>
+                        <Select
+                            placeholder='Selecciona el tipo'
+                            onChange={handleCurrency}
+                            value={currencyType}
+                        >
+                            <option value='COP'>COP</option>
+                            <option value='USD'>USD</option>
                         </Select>
                     </FormControl>
-                    <Box
-                        display="flex"
-                    >
+                    <Box display="flex">
                         <Text as="span" fontSize="2xl" fontWeight="bold">Total</Text>
                         <Spacer />
                         <Text as="span" fontSize="2xl" fontWeight="bold">${total.toLocaleString()}</Text>
@@ -193,21 +200,30 @@ const Checkout = () => {
                         height="auto"
                         gap="20px"
                     >
-                        <Button
-                            width="100%"
-                            height="45px"
-                            onClick={() => createOrder()}
-                            isLoading={btnIsDisabled}
-                            isDisabled={btnIsDisabled || fieldRequired}
-                        >
-                            Pagar con mercado pago
-                        </Button>
-                        <PayPalButtons
-                            style={{
-                                "layout": "horizontal",
-                                height: 45
-                            }}
-                        />
+                        {
+                            currencyType == "USD" ?
+                                <PayPalButtons
+                                    className="button-paypal"
+                                    style={{
+                                        "layout": "horizontal",
+                                        height: 45,
+                                        disableMaxWidth: true,
+                                        color: 'white'
+                                    }}
+                                /> :
+                                <Button
+                                    width="100%"
+                                    height="45px"
+                                    onClick={() => createOrder()}
+                                    isLoading={btnIsDisabled}
+                                    isDisabled={btnIsDisabled || fieldRequired}
+                                    colorScheme='blue'
+
+                                    leftIcon={<SiMercadopago fontSize="28px" />}
+                                >
+                                    Pagar con mercado pago
+                                </Button>
+                        }
                     </Box>
 
                 </Box>

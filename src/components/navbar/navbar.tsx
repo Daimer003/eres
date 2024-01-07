@@ -17,13 +17,12 @@ import Link from "next/link";
 
 const Navbar = () => {
     const [show, setShow] = useState(false);
-    const { eres, currency, checkout } = useCart()
+    const { eres, currencyType, currency } = useCart()
     const [itemsCart, setItemsCart] = useState<boolean>(false)
-    // const [currency, setCurrency] = useState('COP')
+    const [change, setChange] = useState(false)
 
 
     useEffect(() => {
-        checkout("COP", 10)
         window.addEventListener("scroll", listenToScroll);
         return () =>
             window.removeEventListener("scroll", listenToScroll);
@@ -49,9 +48,16 @@ const Navbar = () => {
         setItemsCart(listening)
     }
 
-    useEffect(() => {
-        console.log(currency)
-    }, [currency])
+    //*Cambia el estado
+    const changeMoney = () => {
+        setChange(prov => !change)
+        switch (change) {
+            case true: currency("COP")
+                break;
+            case false: currency("USD")
+                break;
+        }
+    }
 
 
     return (
@@ -70,7 +76,7 @@ const Navbar = () => {
                     <Spacer />
                     <Box display="flex" gap="10px" fontWeight="600">
                         <BoxShop n={eres?.length}><span onClick={() => onCart(true)}><GrShop /></span></BoxShop>
-                        <span onClick={() => checkout("USD", 10)}>{currency}</span>
+                        <span onClick={() => changeMoney()}>{currencyType}</span>
                     </Box>
                 </BoxMenuDesktop>
                 <BoxMenu>

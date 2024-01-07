@@ -1,5 +1,5 @@
 import { BoxCardOrderImage } from "@/styles/components/Card/cardOrder";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Spacer, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { BsFillTrash3Fill } from "react-icons/bs";
 
@@ -17,7 +17,7 @@ const CardOrden = ({ remove, item }: Props) => {
             w="100%"
             gap="10px"
             backgroundColor="gray.100"
-            padding="20px"
+            padding="10px"
             borderRadius="16px"
         >
             <BoxCardOrderImage>
@@ -37,26 +37,44 @@ const CardOrden = ({ remove, item }: Props) => {
                 flexDirection="column"
                 width="100%"
             >
-                <Text
-                    as="h3"
-                    fontSize="xl"
-                    fontWeight="bold"
-                >{item.title}</Text>
-                <Text
-                    as="p"
-                    fontSize="sm"
-                    fontWeight="normal"
-                >{item.text}</Text>
-                <Text
-                    as="p"
-                    fontSize="sm"
-                    fontWeight="medium"
-                >{item.category}</Text>
-                <Text
-                    as="p"
-                    fontSize="mds"
-                    fontWeight="bold"
-                >Precio: ${item?.price.toLocaleString()}</Text>
+                <Box>
+                    <Text
+                        as="h3"
+                        fontSize="xl"
+                        fontWeight="bold"
+                    >{item.title}
+                    </Text>
+                    <Text
+                        as="p"
+                        fontSize="sm"
+                        fontWeight="normal"
+                    >{item.text}
+                    </Text>
+                    <Text
+                        as="p"
+                        fontSize="sm"
+                        fontWeight="medium"
+                    >{item.category}
+                    </Text>
+                </Box>
+                <Spacer />
+                <Box
+                    display="flex"
+                    width="100%">
+                    <Text
+                        as="span"
+                        fontSize="xl"
+                        fontWeight="bold"
+                    >Precio:
+                    </Text>
+                    <Spacer />
+                    <Text
+                        as="span"
+                        fontSize="xl"
+                        fontWeight="bold"
+                    > ${item?.price.toLocaleString()}
+                    </Text>
+                </Box>
 
             </Box>
             <Box
@@ -65,6 +83,7 @@ const CardOrden = ({ remove, item }: Props) => {
                 alignItems="flex-end"
                 width="auto"
                 fontSize="20px"
+                marginBottom='5px'
             >
                 <span
                     style={{ cursor: "pointer" }}
