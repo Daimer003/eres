@@ -11,7 +11,13 @@ const url: string = process.env.NEXT_PUBLIC_DOMAIN_URL
 const urls: string = process.env.NEXT_PUBLIC_DOMAIN_URLS
 
 //*Configuracion de mercadopago
-const client = new MercadoPagoConfig({ accessToken: token, options: { timeout: 5000 } });
+const client = new MercadoPagoConfig(
+    {
+        accessToken: token,
+        options: { timeout: 5000 }
+    }
+);
+
 
 const corsMiddleware = Cors({
     methods: ['GET', 'POST', 'OPTIONS'],
@@ -32,13 +38,13 @@ async function runMiddleware(
     });
 }
 
-//* Crea la orden de pago
+//* Crea la orden de mercadopago
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const params = req.body
     await runMiddleware(req, res, corsMiddleware);
+    const params = req.body
     const preference = new Preference(client);
 
     try {

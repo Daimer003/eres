@@ -14,10 +14,19 @@ const EntrenaminetoVocal = () => {
                 alignItems="center"
                 justifyContent="center"
             >
-                <Text as="h3" fontFamily="'Cormorant Garamond', serif" fontSize="5xl" >
+                <Text
+                    as="h3"
+                    fontFamily="'Cormorant Garamond', serif"
+                    fontSize="5xl"
+                >
                     Entrenamineto Vocal
                 </Text>
-                <Text as="p" fontSize="18px" fontFamily="'Cormorant Garamond', serif" textAlign="center">
+                <Text
+                    as="p"
+                    fontSize="18px"
+                    fontFamily="'Cormorant Garamond', serif"
+                    textAlign="center"
+                >
                     Nuestra categoría de Rehabilitación Vocal está diseñada para cuidar y mejorar tu voz hablada y/o cantada. Te ofrecemos los siguientes paquetes especializados para ti:
                 </Text>
             </Box>

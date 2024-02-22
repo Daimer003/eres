@@ -36,7 +36,7 @@ export const BoxMenuDesktop = styled(Box)`
     font-weight: 500;
 
   }
-  @media screen and (width > 900px) {
+  @media screen and (width > 1024px) {
     display: flex;
   }
 `;
@@ -48,7 +48,7 @@ export const BoxMenu = styled(Box)`
     font-size: 20px;
     cursor: pointer;
   }
-  @media screen and (width < 900px) {
+  @media screen and (width < 1024px) {
     display: flex;
     align-items: center;
   }

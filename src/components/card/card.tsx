@@ -15,9 +15,18 @@ const Card = ({ id, img, title, text, value, onClick }: Props) => {
 
     return (
         < BoxCard>
-            <Box display="flex" flexDirection="column" gap="10px">
+            <Box
+                display="flex"
+                flexDirection="column"
+                gap="10px"
+            >
                 <BoxContentImg>
-                    <Image src={img} alt="Imagen eres" width={400} height={400} />
+                    <Image
+                        src={img}
+                        alt="Imagen eres"
+                        width={400}
+                        height={400}
+                    />
                 </BoxContentImg>
                 <Box
                     display="flex"
@@ -25,7 +34,8 @@ const Card = ({ id, img, title, text, value, onClick }: Props) => {
                     flexDirection="column"
                     alignItems="center"
                     p="20px"
-                    gap="10px">
+                    gap="10px"
+                >
                     <Box
                         display="flex"
                         flexDirection="column"

@@ -147,3 +147,65 @@ export const imgs = [
     },
 ]
 
+export const techniques = [
+    {
+        id: 1,
+        img: "/assets/img-details-1.jpg",
+        title: "Respiración diafragmática"
+    },
+    {
+        id: 2,
+        img: "/assets/img-details-2.jpg",
+        title: "Apoyo vocal"
+    },
+    {
+        id: 3,
+        img: "/assets/img-details-3.jpg",
+        title: "Escalas y ejercicios de vocalización"
+    },
+    {
+        id: 4,
+        img: "/assets/img-details-4.jpg",
+        title: "Modulación de la resonancia"
+    },
+    {
+        id: 5,
+        img: "/assets/img-details-5.jpg",
+        title: "Relajación muscular"
+    },
+    {
+        id: 6,
+        img: "/assets/img-details-6.jpg",
+        title: "Articulación y dicción"
+    },
+    {
+        id: 7,
+        img: "/assets/img-details-7.jpg",
+        title: "Control del vibrato"
+    },
+    {
+        id: 8,
+        img: "/assets/img-details-8.jpg",
+        title: "Proyección vocal"
+    },
+    {
+        id: 9,
+        img: "/assets/img-details-5.jpg",
+        title: "Interpretación emocional"
+    },
+    {
+        id: 10,
+        img: "/assets/img-details-6.jpg",
+        title: "Entrenamiento auditivo"
+    },
+    {
+        id: 11,
+        img: "/assets/img-details-7.jpg",
+        title: "TRegistro vocal"
+    },
+    {
+        id: 12,
+        img: "/assets/img-details-8.jpg",
+        title: "écnicas de proyección de la voz"
+    },
+]

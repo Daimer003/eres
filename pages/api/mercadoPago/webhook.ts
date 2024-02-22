@@ -37,7 +37,6 @@ export default async function handler(
     try {
         if (getPayment.type === "payment") {
             const data = await payment.get({ id: String(getPayment["data.id"]) })
-            console.log(data)
             res.status(204).json(data);
         }
 

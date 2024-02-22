@@ -24,14 +24,13 @@ const Details = ({ itemCourse, onClose }: Props) => {
             alignItems="center"
             width="100%"
             height="100%"
-            padding="10px"
             gap="20px">
             <BoxDetailsImage>
                 <Image
                     src={itemCourse.image}
                     alt="Imagen del curso"
-                    width={350}
-                    height={350}
+                    width={420}
+                    height={420}
                     style={{
                         borderRadius: "20px"
                     }}

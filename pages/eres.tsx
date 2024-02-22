@@ -1,18 +1,17 @@
 import { useState, useRef } from "react";
 import Card from "@/src/components/card/card";
 import Details from "@/src/components/details/details";
-import { useDisclosure } from '@chakra-ui/react'
+import {
+    useDisclosure,
+} from '@chakra-ui/react'
 import {
     BoxHeader,
     GridImg,
     BoxText,
     BoxEres,
     BoxTeachers,
-    BoxRowTeachers,
-    BoxContent,
     BoxRehabilitation,
     BoxRowRehabilitation,
-    ContentAudio
 } from "@/styles/components/header/header.styles";
 import { Box, Text } from "@chakra-ui/react";
 import Image from "next/image";
@@ -20,7 +19,10 @@ import ModalComponet from "@/src/components/modal/modal";
 import Carousel from "@/src/components/carousel/carousel";
 import { SwiperSlide } from 'swiper/react';
 import { curso, imgs } from "@/src/utils/data/data";
-import { BsPlayFill, BsPauseFill } from "react-icons/bs";
+import Techniques from "@/src/components/smallComponents/techniques/techniques";
+// import { BsPlayFill, BsPauseFill } from "react-icons/bs";
+
+
 
 const Eres = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -69,11 +71,17 @@ const Eres = () => {
                         alignItems="center"
                         justifyContent="center"
                         width="100%"
-                        maxW="600px">
-                        <Image src="/assets/eres.png" alt="Imagen eres" width={400} height={400} />
+                        maxW="600px"
+                        borderRadius="28px"
+                        overflow="hidden"
+                    >
+                        <Image src="/assets/img-details-7.jpg" alt="Imagen eres" width={400} height={400} />
                     </Box>
                     <Box width="100%">
-                        <Text as="h2" fontFamily="'Cormorant Garamond', serif" fontSize="5xl">
+                        <Text
+                            as="h2"
+                            fontFamily="'Cormorant Garamond', serif"
+                            fontSize="5xl">
                             En Eres
                         </Text>
                         <Text
@@ -90,69 +98,15 @@ const Eres = () => {
 
             <Box>
                 <BoxTeachers>
-                    <Text as="h3" fontSize="5xl" textAlign="center" fontFamily="'Cormorant Garamond', serif">Tus Profes</Text>
-                    <BoxRowTeachers>
-                        <BoxContent imgBackground="/assets/teachers/pahola.png">
-                            {/* <Image src="/assets/teachers/pahola.png" alt="Imagen eres" width={400} height={400} /> */}
-                            <ContentAudio>
-                                <audio ref={audioRef} controls>
-                                    <source src="/assets/audios/amarte-Igual.mp3" type="audio/mpeg" />
-                                    Tu navegador no soporta el elemento de audio.
-                                </audio>
-                                <button onClick={togglePlay}>
-                                    {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
-                                </button>
-                            </ContentAudio>
-                            <Box
-                                display="flex"
-                                flexDirection="column"
-                                alignItems="center"
-                                justifyContent="center"
-                            >
-                                <Text as="h4" color="#9AE4D3" fontSize="4xl" fontFamily="'Cormorant Garamond', serif">
-                                    Pahola Valenzuela
-                                </Text>
-                                <Text as="p" color="#FFFFFF" fontSize="2xl" >
-                                    Escucha nuestra voz.
-                                </Text>
-                            </Box>
-
-                        </BoxContent>
-                        <BoxContent
-                            imgBackground="/assets/teachers/danna.png">
-                            {/* <Image src="/assets/teachers/danna.png" alt="Imagen eres" width={400} height={400} /> */}
-                            <ContentAudio>
-                                <audio ref={audioRef} controls>
-                                    <source src="/assets/audios/amarte-Igual.mp3" type="audio/mpeg" />
-                                    Tu navegador no soporta el elemento de audio.
-                                </audio>
-                                <button onClick={togglePlay}>
-                                    {isPlaying ? <BsPauseFill /> : <BsPlayFill />}
-                                </button>
-                            </ContentAudio>
-                            <Box
-                                display="flex"
-                                flexDirection="column"
-                                alignItems="center"
-                                justifyContent="center"
-                            >
-                                <Text
-                                    as="h4"
-                                    color="#9AE4D3"
-                                    fontSize="4xl"
-                                    fontFamily="'Cormorant Garamond', serif"
-                                >Danna Palacios
-                                </Text>
-                                <Text
-                                    as="p"
-                                    color="#FFFFFF"
-                                    fontSize="2xl"
-                                >
-                                    Escucha nuestra voz.
-                                </Text>
-                            </Box>
-                        </BoxContent>
-                    </BoxRowTeachers>
+                    <Text
+                        as="h3"
+                        fontSize="5xl"
+                        textAlign="center"
+                        fontFamily="'Cormorant Garamond', serif"
+                    >
+                        Técnicas y enfoques
+                    </Text>
+                    <Techniques />
                 </BoxTeachers>
             </Box>
 

@@ -1,4 +1,4 @@
-import { CheckoutService } from "@/src/services/checkout.mercadopago.service";
+import { CheckoutServiceMercadoPago } from "@/src/services/checkout.mercadopago.service";
 import { ButtonPrimary } from "@/styles/components/Button/button.styles";
 import {
     Box,
@@ -22,10 +22,11 @@ const Success = () => {
 
     //*Obtiene los datos del item pagado, en mercado pago.
     useEffect(() => {
+        console.log(data)
         const reference = data?.collection_id
         if (reference) {
             (async () => {
-                const response = await CheckoutService.getSuccess(String(reference))
+                const response = await CheckoutServiceMercadoPago.getSuccess(String(reference))
                 reference && setDetails(response)
             })()
         }

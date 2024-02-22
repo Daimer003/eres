@@ -9,7 +9,7 @@ import "../styles/swiper.css";
 import Layaut from '@/src/components/layout/Layaut';
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
-const clientId = process.env.NEXT_PUBLIC_CLIENT_ID as string
+const clientId = process.env.NEXT_PUBLIC_CLIENT_ID
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
           < CartProvider >
             <LocaleProvider >
               <Layaut >
-                <Component {...pageProps} />
+                <Component {...pageProps} router="eres" />
               </Layaut>
             </LocaleProvider>
           </CartProvider>

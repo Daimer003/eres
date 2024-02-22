@@ -3,7 +3,7 @@
 // const v1: string = process.env.NEXT_PUBLIC_BASE_API_VERSION;
 // const token: string = process.env.NEXT_PUBLIC_SERVICE_ACCESS_TOKEN;
 
-export class CheckoutService {
+export class CheckoutServiceMercadoPago {
     static pay = async () => {
         try {
             const response = await fetch(`/api/mercadoPago/payments`, {
@@ -25,7 +25,7 @@ export class CheckoutService {
         name: string,
         lastName: string,
         email: string,
-        phone: number,
+        phone: string,
         price: number,
         title: string,
         description: string,

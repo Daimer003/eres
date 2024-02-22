@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import Cors from 'cors';
 import fetch from 'node-fetch';
 
-const key: string = process.env.NEXT_PUBLIC_API_KER;
+// const key: string = process.env.NEXT_PUBLIC_API_KER;
 const v1: string = process.env.NEXT_PUBLIC_BASE_API_VERSION;
 const token: string = process.env.NEXT_PUBLIC_SERVICE_ACCESS_TOKEN;
 const url: string = process.env.NEXT_PUBLIC_BASE_API_URL

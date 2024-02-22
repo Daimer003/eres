@@ -10,8 +10,8 @@ import Checkout from './checkout';
 export default function Home({ router }) {
   const [routing, _] = useState<any>({
     eres: <Eres />,
-    rehabilitacionvocal: < RehabilitaciónVocal />,
-    entrenamientovocal: <EntrenaminetoVocal />,
+    rehabilitacionVocal: < RehabilitaciónVocal />,
+    entrenamientoVocal: <EntrenaminetoVocal />,
     checkout: <Checkout />
   });
 

@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
-import { Box, Spacer } from "@chakra-ui/react";
+import {
+    Box,
+    Spacer,
+    MenuList,
+    Menu,
+    MenuButton,
+    IconButton,
+    MenuItem
+} from "@chakra-ui/react";
 import Image from "next/image";
 import {
     BoxContainerNav,
@@ -9,10 +17,10 @@ import {
     BoxShop
 } from "@/styles/components/Navbar/navbar.styles";
 import { GrShop } from "react-icons/gr";
-import { HamburgerIcon } from '@chakra-ui/icons'
 import { useCart } from "@/src/hooks/useCart";
 import Cart from "../cart/cart";
 import Link from "next/link";
+import { MdOutlineMenu } from "react-icons/md";
 
 
 const Navbar = () => {
@@ -69,9 +77,21 @@ const Navbar = () => {
                 <Spacer />
                 <BoxMenuDesktop>
                     <Box display="flex" gap="60px">
-                        <Link href="/eres">Inicio</Link>
-                        <Link href="/rehabilitacionvocal">Rehabilitación vocal</Link>
-                        <Link href="/entrenamientovocal">Entrenamiento Vocal</Link>
+                        <Link
+                            href="/eres"
+                        >
+                            Inicio
+                        </Link>
+                        <Link
+                            href="/rehabilitacionVocal"
+                        >
+                            Rehabilitación vocal
+                        </Link>
+                        <Link
+                            href="/entrenamientoVocal"
+                        >
+                            Entrenamiento Vocal
+                        </Link>
                     </Box>
                     <Spacer />
                     <Box display="flex" gap="10px" fontWeight="600">
@@ -80,11 +100,50 @@ const Navbar = () => {
                     </Box>
                 </BoxMenuDesktop>
                 <BoxMenu>
-                    <span><HamburgerIcon boxSize={8} /></span>
+                    <Box ml={2} >
+                        <Menu
+                            isLazy
+                            id="navbar-menu"
+                        >
+                            <MenuButton
+                                as={IconButton}
+                                colorScheme="gray.900"
+                                icon={<MdOutlineMenu />}
+                                fontSize="2xl"
+                                color="gray.900"
+                                variant="outline"
+                                aria-label="Options"
+                            />
+                            <MenuList
+                                display="flex"
+                                flexDirection="column"
+                                padding="10px"
+                                gap="10px"
+                                marginTop="20px"
+                            >     <Link href="/" >
+                                    <MenuItem >
+                                        Home
+                                    </MenuItem>
+                                </Link>
+                                <Link href="/rehabilitacionVocal" >
+                                    <MenuItem >
+                                        Rehabilitación vocal
+                                    </MenuItem>
+                                </Link >
+                                <Link href="/entrenamientoVocal" >
+                                    <MenuItem >
+                                        Entrenamiento Vocal
+                                    </MenuItem>
+                                </Link>
+                            </MenuList>
+                        </Menu>
+                    </Box>
                 </BoxMenu>
             </BoxNav >
             <Cart onClose={itemsCart} onOpen={onCart} />
-        </BoxContainerNav>
+
+
+        </BoxContainerNav >
     );
 }
 

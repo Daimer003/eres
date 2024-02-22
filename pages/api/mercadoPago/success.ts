@@ -4,7 +4,6 @@ import { MercadoPagoConfig, Payment } from 'mercadopago';
 
 const token: string = process.env.NEXT_PUBLIC_SERVICE_ACCESS_TOKEN;
 
-
 //*Configuracion de mercadopago
 const client = new MercadoPagoConfig({ accessToken: token, options: { timeout: 5000 } });
 
