@@ -22,17 +22,19 @@ const innerBoxStyles = {
 
 const Techniques = () => {
     return (
-        <Wrap>
+        <Wrap align="center" justify='center' spacing={5} >
             {
                 techniques.map((item, index) => {
                     return (
                         <WrapItem
                             key={index}
-
+                            display="flex"
+                            justifyContent="center"
+                            alignItems="center"
                         >
                             <Center
-                                w='250px'
-                                h='250px'
+                                w={{ base: '170px', md: '240px' }}
+                                h={{ base: '170px', md: '240px' }}
 
                             >
                                 <Badge
@@ -60,13 +62,14 @@ const Techniques = () => {
                                         height="100%"
                                         backdropFilter='auto'
                                         backdropContrast='50%'
+                                        padding="10px"
                                     >
                                         <Text
                                             textAlign="center"
                                             textOverflow="ellipsis"
                                             overflow="hidden"
                                             whiteSpace="normal"
-                                            fontSize="2xl"
+                                            fontSize={{ base: 'md', md: '2xl' }}
                                         >
                                             {item.title}
                                         </Text>
@@ -77,8 +80,6 @@ const Techniques = () => {
                     )
                 })
             }
-
-
         </Wrap>
 
     );
